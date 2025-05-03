@@ -4,6 +4,7 @@
 
 #ifndef COLORPALETTE_H_
 #define COLORPALETTE_H_
+#include <LittleFS.h>
 #include <M5Unified.h>
 #include <string>
 #include <map>

@@ -39,6 +39,32 @@ DrawContext::DrawContext(Expression expression, float breath,
       batteryLevel(batteryLevel),
       speechFont{speechFont} {}
 
+DrawContext::DrawContext(Expression expression, float breath,
+                         ColorPalette* const palette, Gaze rightGaze,
+                         float rightEyeOpenRatio, Gaze leftGaze,
+                         float leftEyeOpenRatio, float mouthOpenRatio,
+                         String speechText, float rotation, float scale,
+                         int colorDepth, BatteryIconStatus batteryIconStatus,
+                         int32_t batteryLevel, const lgfx::IFont* speechFont,
+                         bool enableVLW, int16_t vlwFontSize)
+    : expression{expression},
+      breath{breath},
+      rightGaze{rightGaze},
+      rightEyeOpenRatio{rightEyeOpenRatio},
+      leftGaze{leftGaze},
+      leftEyeOpenRatio{leftEyeOpenRatio},
+      mouthOpenRatio{mouthOpenRatio},
+      palette{palette},
+      speechText{speechText},
+      rotation{rotation},
+      scale{scale},
+      colorDepth{colorDepth},
+      batteryIconStatus(batteryIconStatus),
+      batteryLevel(batteryLevel),
+      speechFont{speechFont},
+      enableVLW{enableVLW},
+      vlwFontSize{vlwFontSize} {}
+
 Expression DrawContext::getExpression() const { return expression; }
 
 float DrawContext::getMouthOpenRatio() const { return mouthOpenRatio; }
@@ -64,6 +90,10 @@ ColorPalette* const DrawContext::getColorPalette() const { return palette; }
 int DrawContext::getColorDepth() const { return colorDepth; }
 
 const lgfx::IFont* DrawContext::getSpeechFont() const { return speechFont; }
+
+bool DrawContext::getEnableVLW() const { return enableVLW; }
+
+int16_t DrawContext::getVLWFontSize() const { return vlwFontSize; }
 
 BatteryIconStatus DrawContext::getBatteryIconStatus() const {
   return batteryIconStatus;

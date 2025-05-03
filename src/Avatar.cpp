@@ -115,7 +115,9 @@ Avatar::Avatar(Face *face)
       palette{ColorPalette()},
       speechText{""},
       colorDepth{1},
-      batteryIconStatus{BatteryIconStatus::invisible} {}
+      batteryIconStatus{BatteryIconStatus::invisible},
+      enableVLW{false},
+      vlwFontSize{16} {}
 
 Avatar::~Avatar() { delete face; }
 
@@ -180,7 +182,7 @@ void Avatar::start(int colorDepth) {
   // TODO(meganetaaan): keep handle of these tasks
   xTaskCreateUniversal(drawLoop,        /* Function to implement the task */
                        "drawLoop",      /* Name of the task */
-                       2048,            /* Stack size in words */
+                       8192,            /* Stack size in words */
                        ctx,             /* Task input parameter */
                        1,               /* Priority of the task */
                        &drawTaskHandle, /* Task handle. */
@@ -204,7 +206,7 @@ void Avatar::draw() {
       this->rightEyeOpenRatio_, leftGaze, this->leftEyeOpenRatio_,
       this->mouthOpenRatio, this->speechText, this->rotation, this->scale,
       this->colorDepth, this->batteryIconStatus, this->batteryLevel,
-      this->speechFont);
+      this->speechFont, this->enableVLW, this->vlwFontSize);
   face->draw(ctx);
   delete ctx;
 }
@@ -289,6 +291,11 @@ void Avatar::setSpeechText(const char *speechText) {
 
 void Avatar::setSpeechFont(const lgfx::IFont *speechFont) {
   this->speechFont = speechFont;
+}
+
+void Avatar::setSpeechVlwFont(bool enable, int16_t fontSize){
+  this->enableVLW = enable;
+  this->vlwFontSize = fontSize;
 }
 
 void Avatar::setBatteryIcon(bool batteryIcon) {

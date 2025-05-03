@@ -10,7 +10,9 @@
 #include "ColorPalette.h"
 #include "Expression.h"
 #include "Gaze.h"
-#include "M5GFX.h"
+#include <LittleFS.h>
+#include <M5Unified.h>
+//#include "M5GFX.h"
 
 #ifndef ARDUINO
 #include <string>
@@ -42,6 +44,10 @@ class DrawContext {
   int32_t batteryLevel = 0;
   const lgfx::IFont* speechFont =
       nullptr;  // = &fonts::lgfxJapanGothicP_16; //  = &fonts::efontCN_10;
+  //fs::LittleFSFS *fs;
+  //const char *VLWpath;
+  bool enableVLW;
+  int16_t vlwFontSize;
 
  public:
   DrawContext() = delete;
@@ -50,12 +56,19 @@ class DrawContext {
               float leftEyeOpenRatio, float mouthOpenRatio, String speechText,
               BatteryIconStatus batteryIconStatus, int32_t batteryLevel,
               const lgfx::IFont* speechFont);
+              DrawContext(Expression expression, float breath, ColorPalette* const palette,
+                Gaze rightGaze, float rightEyeOpenRatio, Gaze leftGaze,
+                float leftEyeOpenRatio, float mouthOpenRatio, String speechText,
+                float rotation, float scale, int colorDepth,
+                BatteryIconStatus batteryIconStatus, int32_t batteryLevel,
+                const lgfx::IFont* speechFont);
   DrawContext(Expression expression, float breath, ColorPalette* const palette,
               Gaze rightGaze, float rightEyeOpenRatio, Gaze leftGaze,
               float leftEyeOpenRatio, float mouthOpenRatio, String speechText,
               float rotation, float scale, int colorDepth,
               BatteryIconStatus batteryIconStatus, int32_t batteryLevel,
-              const lgfx::IFont* speechFont);
+              const lgfx::IFont* speechFont,
+              bool enableVLW, int16_t vlwFontSize);
   ~DrawContext() = default;
   DrawContext(const DrawContext& other) = delete;
   DrawContext& operator=(const DrawContext& other) = delete;
@@ -74,6 +87,8 @@ class DrawContext {
   BatteryIconStatus getBatteryIconStatus() const;
   int32_t getBatteryLevel() const;
   const lgfx::IFont* getSpeechFont() const;
+  bool getEnableVLW() const;
+  int16_t getVLWFontSize() const;
 };
 }  // namespace m5avatar
 

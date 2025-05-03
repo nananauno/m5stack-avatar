@@ -4,8 +4,9 @@
 
 #ifndef AVATAR_H_
 #define AVATAR_H_
-#include <M5GFX.h>
-
+#include <LittleFS.h>
+#include <M5Unified.h>
+//#include <M5GFX.h>
 #include "ColorPalette.h"
 #include "Face.h"
 
@@ -58,6 +59,9 @@ class Avatar {
   BatteryIconStatus batteryIconStatus;
   int32_t batteryLevel;
   const lgfx::IFont *speechFont;
+  // For VLW font
+  bool enableVLW;
+  int16_t vlwFontSize;
 
  public:
   Avatar();
@@ -107,6 +111,7 @@ class Avatar {
   void setMouthOpenRatio(float ratio);
   void setSpeechText(const char *speechText);
   void setSpeechFont(const lgfx::IFont *speechFont);
+  void setSpeechVlwFont(bool enable, int16_t fontSize);
   void setRotation(float radian);
   void setPosition(int top, int left);
   void setScale(float scale);
@@ -115,7 +120,7 @@ class Avatar {
   void start(int colorDepth = 1);
   void stop();
   void addTask(TaskFunction_t f, const char *name,
-               const uint32_t stack_size = 2048, UBaseType_t priority = 4,
+               const uint32_t stack_size = 8192, UBaseType_t priority = 4,
                TaskHandle_t *const task_handle = NULL,
                const BaseType_t core_id = APP_CPU_NUM);
   void suspend();

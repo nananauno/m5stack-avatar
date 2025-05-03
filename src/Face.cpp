@@ -88,6 +88,7 @@ void Face::draw(DrawContext *ctx) {
   sprite->createSprite(boundingRect->getWidth(), boundingRect->getHeight());
   sprite->setColorDepth(ctx->getColorDepth());
   // NOTE: setting below for 1-bit color depth
+  //M5.Log(esp_log_level_t::ESP_LOG_INFO, "Sprite depth: %d", sprite->getColorDepth());
   sprite->setBitmapColor(ctx->getColorPalette()->get(COLOR_PRIMARY),
     ctx->getColorPalette()->get(COLOR_BACKGROUND));
   if (ctx->getColorDepth() != 1) {

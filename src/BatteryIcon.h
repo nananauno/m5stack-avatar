@@ -4,7 +4,8 @@
 
 #ifndef BATTERYICON_H_
 #define BATTERYICON_H_
-#include <M5GFX.h>
+#include <LittleFS.h>
+//#include <M5GFX.h>
 #include <M5Unified.h>
 #include "DrawContext.h"
 #include "Drawable.h"

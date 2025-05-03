@@ -5,7 +5,9 @@
 #ifndef MOUTH_H_
 #define MOUTH_H_
 
-#include <M5GFX.h>
+#include <LittleFS.h>
+#include <M5Unified.h>
+//#include <M5GFX.h>
 #include "BoundingRect.h"
 #include "DrawContext.h"
 #include "Drawable.h"

@@ -291,10 +291,12 @@ void Avatar::setSpeechText(const char *speechText) {
 
 void Avatar::setSpeechFont(const lgfx::IFont *speechFont) {
   this->speechFont = speechFont;
+  this->enableVLW = false;
 }
 
-void Avatar::setSpeechVlwFont(bool enable, int16_t fontSize){
-  this->enableVLW = enable;
+void Avatar::setSpeechFont(const lgfx::IFont *speechFont, bool enableVLW, int16_t fontSize){
+  this->speechFont = speechFont;
+  this->enableVLW = enableVLW;
   this->vlwFontSize = fontSize;
 }
 

@@ -48,8 +48,7 @@ void setup() {
   }
   
   // 吹き出しテキストのフォントを設定
-  avatar.setSpeechFont(vlwfont.getFont());
-  avatar.setSpeechVlwFont(true, 24);  // VLWフォントをサイズ24で有効化
+  avatar.setSpeechFont(vlwfont.getFont(), true, 24);  // VLWフォントをサイズ24で有効化
   avatar.init(16);
 }
 ```
@@ -66,7 +65,7 @@ void setup() {
 
 - `BIZ_UDPGothic_24.vlw`: [SIL Open Font License Version 1.1](LICENSE_BIZ_UDPGOTHIC.txt)
 - `HachiMaruPop_24.vlw`: [SIL Open Font License Version 1.1](LICENSE_HACHIMARU.txt)
-  
+
 ## インストール
 
 ### 前提

@@ -48,8 +48,7 @@ void setup() {
   }
   
   // Set the font for speech
-  avatar.setSpeechFont(vlwfont.getFont());
-  avatar.setSpeechVlwFont(true, 24);  // Enable VLW font with size 24
+  avatar.setSpeechFont(vlwfont.getFont(), true, 24);  // Enable VLW font with size 24
   avatar.init(16);
 }
 ```

@@ -111,7 +111,7 @@ class Avatar {
   void setMouthOpenRatio(float ratio);
   void setSpeechText(const char *speechText);
   void setSpeechFont(const lgfx::IFont *speechFont);
-  void setSpeechVlwFont(bool enable, int16_t fontSize);
+  void setSpeechFont(const lgfx::IFont *speechFont, bool enableVLW, int16_t fontSize);
   void setRotation(float radian);
   void setPosition(int top, int left);
   void setScale(float scale);

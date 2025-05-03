@@ -31,8 +31,7 @@ void setup()
     M5.delay(3000);
     esp_restart();
   }
-  avatar.setSpeechFont(vlwfont1.getFont());
-  avatar.setSpeechVlwFont(enableVLW, 24);
+  avatar.setSpeechFont(vlwfont1.getFont(), enableVLW, 24);
   avatar.init(16);
 }
 
@@ -58,16 +57,13 @@ void loop()
     fontIdx++;
     switch(fontIdx%3){
       case 0:
-        avatar.setSpeechFont(vlwfont1.getFont());
-        avatar.setSpeechVlwFont(true, 24);
+        avatar.setSpeechFont(vlwfont1.getFont(), enableVLW, 24);
         break;
       case 1:
-        avatar.setSpeechFont(vlwfont2.getFont());
-        avatar.setSpeechVlwFont(true, 24);
+        avatar.setSpeechFont(vlwfont2.getFont(), enableVLW, 24);
         break;
       case 2:
         avatar.setSpeechFont(NULL);
-        avatar.setSpeechVlwFont(false, 0);
         break;
     }
   }

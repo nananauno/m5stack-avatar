@@ -25,8 +25,7 @@ void setup()
     M5.delay(3000);
     esp_restart();
   }
-  avatar.setSpeechFont(vlwfont.getFont());
-  avatar.setSpeechVlwFont(true, 24);
+  avatar.setSpeechFont(vlwfont.getFont(), true, 24);
   avatar.init(16);
 }
 

@@ -26,6 +26,47 @@
 * :arrows_clockwise: 顔を移動、拡大、回転できます。
 * :two:              M5Stack Core2に対応。
 
+## VLWフォントのサポート
+
+このライブラリは、吹き出しテキストの表示にVLWフォントを使用できるようになりました。カスタムVLWフォントを使用して、異なるスタイルのテキスト（日本語フォントを含む）を表示できます。
+
+### VLWフォントの使い方
+
+1. `.vlw`フォントファイルを`data`ディレクトリに配置します
+2. Platform IOの「Upload Filesystem Image」またはArduino IDEのESP32 Sketch Data Uploadを使用して、フォントファイルをLittleFSにアップロードします
+3. コードでフォントを読み込んで使用します：
+
+```cpp
+M5GFX vlwfont;
+
+void setup() {
+  // ... その他のセットアップコード ...
+  
+  // LittleFSからフォントを読み込む
+  if(!vlwfont.loadFont(LittleFS, "/YourFont.vlw")){
+    // エラー処理
+  }
+  
+  // 吹き出しテキストのフォントを設定
+  avatar.setSpeechFont(vlwfont.getFont());
+  avatar.setSpeechVlwFont(true, 24);  // VLWフォントをサイズ24で有効化
+  avatar.init(16);
+}
+```
+
+詳細な使用例は`examples/vlwfont`と`examples/multiple-vlwfont`ディレクトリを参照してください。
+
+### 同梱フォント
+
+`data`ディレクトリには以下のVLWフォントが同梱されています：
+- `BIZ_UDPGothic_24.vlw` - 日本語ゴシック体フォント
+- `HachiMaruPop_24.vlw` - かわいい手書き風の日本語フォント
+
+### ライセンス
+
+- `BIZ_UDPGothic_24.vlw`: [SIL Open Font License Version 1.1](LICENSE_BIZ_UDPGOTHIC.txt)
+- `HachiMaruPop_24.vlw`: [SIL Open Font License Version 1.1](LICENSE_HACHIMARU.txt)
+  
 ## インストール
 
 ### 前提

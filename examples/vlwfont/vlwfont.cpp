@@ -26,8 +26,8 @@ void setup()
     esp_restart();
   }
   avatar.setSpeechFont(vlwfont.getFont());
-  avatar.init(16);
   avatar.setSpeechVlwFont(true, 24);
+  avatar.init(16);
 }
 
 void loop()

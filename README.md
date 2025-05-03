@@ -26,6 +26,47 @@ Video: https://www.youtube.com/watch?v=C1Hj9kfY5qc
 * :arrows_clockwise: Move, Zoom and Rotation
 * :two:              Compatible with M5Stack Core2
 
+## VLW Font Support
+
+This library now supports VLW fonts for speech text display. You can use custom VLW fonts to display text in different styles, including Japanese fonts.
+
+### Using VLW Fonts
+
+1. Place your `.vlw` font files in the `data` directory
+2. Upload the font files to LittleFS using Platform IO's "Upload Filesystem Image" or Arduino IDE's ESP32 Sketch Data Upload
+3. Load and use the font in your code:
+
+```cpp
+M5GFX vlwfont;
+
+void setup() {
+  // ... other setup code ...
+  
+  // Load the font from LittleFS
+  if(!vlwfont.loadFont(LittleFS, "/YourFont.vlw")){
+    // Handle error
+  }
+  
+  // Set the font for speech
+  avatar.setSpeechFont(vlwfont.getFont());
+  avatar.setSpeechVlwFont(true, 24);  // Enable VLW font with size 24
+  avatar.init(16);
+}
+```
+
+Check the `examples/vlwfont` and `examples/multiple-vlwfont` directories for complete examples.
+
+### Included Fonts
+
+The following VLW fonts are included in the `data` directory:
+- `BIZ_UDPGothic_24.vlw` - A Japanese Gothic font
+- `HachiMaruPop_24.vlw` - A cute Japanese handwriting-style font
+
+### License
+
+- `BIZ_UDPGothic_24.vlw`: [SIL Open Font License Version 1.1](LICENSE_BIZ_UDPGOTHIC.txt)
+- `HachiMaruPop_24.vlw`: [SIL Open Font License Version 1.1](LICENSE_HACHIMARU.txt)
+
 ## Installation
 
 ### Prerequisites
